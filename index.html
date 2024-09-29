@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Maxaroonie.com</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS to make the header title bold with a rainbow animation */
+        @keyframes rainbowText {
+            0% { color: #ff0000; }
+            16% { color: #ff9900; }
+            32% { color: #33cc33; }
+            48% { color: #00ffff; }
+            64% { color: #3333ff; }
+            80% { color: #cc00ff; }
+            100% { color: #ff0000; }
+        }
+
+        .animated-title {
+            font-weight: bold;
+            font-size: 3em;
+            animation: rainbowText 6s infinite linear;
+            text-align: center;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        /* Header background for better contrast with a starry effect */
+        header {
+            position: relative;
+            background: #000; /* Base black color */
+            padding: 40px 20px;
+            overflow: hidden;
+        }
+
+        /* Creating a starry effect */
+        .starry-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(2px 2px at 20% 30%, #fff, transparent) 0px 0px,
+                        radial-gradient(2px 2px at 40% 80%, #fff, transparent) 10px 15px,
+                        radial-gradient(1.5px 1.5px at 70% 60%, #fff, transparent) 20px 25px,
+                        radial-gradient(1.8px 1.8px at 90% 20%, #fff, transparent) 30px 35px,
+                        radial-gradient(2.5px 2.5px at 10% 90%, #fff, transparent) 40px 45px;
+            background-size: 50px 50px;
+            animation: starryMovement 100s linear infinite;
+        }
+
+        @keyframes starryMovement {
+            0% { background-position: 0 0; }
+            100% { background-position: 1000px 1000px; }
+        }
+
+        /* Making sure the starry background is behind the title */
+        header .animated-title {
+            position: relative;
+            z-index: 1;
+        }
+
+        header .starry-background {
+            z-index: 0;
+        }
+
+        nav a {
+            color: #ffffff; /* Ensures that nav links are readable against dark background */
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+            z-index: 1; /* Ensure nav links are above starry background */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Starry Background Layer -->
+        <div class="starry-background"></div>
+        <h1 class="animated-title">Welcome to Maxaroonie.com</h1>
+        <nav>
+            <a href="#art">Artwork</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Audio Player for Background Music (Auto Play) -->
+    <audio autoplay loop>
+        <source src="file:///home/max/Desktop/portfolio_website/final_lounge_with_voice_faded.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Bouncing Ball Animation -->
+    <div class="bouncing-ball"></div>
+
+    <section id="art" class="art-gallery">
+        <h2>My Artwork</h2>
+        <div class="gallery">
+            <div class="art-item">
+                <img src="path/to/your-art1.jpg" alt="Artwork 1">
+                <p>Title of Artwork 1 - $Price</p>
+                <button>Buy Now</button>
+            </div>
+            <div class="art-item">
+                <img src="path/to/your-art2.jpg" alt="Artwork 2">
+                <p>Title of Artwork 2 - $Price</p>
+                <button>Buy Now</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hi, I'm Max! I am an artist who specializes in [your style of art]. My work focuses on [themes/inspiration]. Feel free to browse my collection and reach out if you're interested in purchasing or just want to connect!</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email me at: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Maxaroonie.com. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
