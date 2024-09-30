@@ -106,11 +106,10 @@
         </nav>
         <!-- Music Play Button -->
         <button id="play-music-button">Play Music</button>
-        <audio id="background-music" controls style="display:none;">
-    <source src="final_lounge_with_voice_faded.wav" type="audio/wav">
-    Your browser does not support the audio element.
-</audio>
-
+        <audio id="background-music">
+            <source src="final_lounge_with_voice_faded.wav" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
     </header>
 
     <!-- Bouncing Ball Animation -->
@@ -148,17 +147,26 @@
 
     <script>
         // JavaScript to control the music play button
-        const playMusicButton = document.getElementById('play-music-button');
-        const backgroundMusic = document.getElementById('background-music');
+        document.addEventListener('DOMContentLoaded', function() {
+            const playMusicButton = document.getElementById('play-music-button');
+            const backgroundMusic = document.getElementById('background-music');
 
-        playMusicButton.addEventListener('click', () => {
-            if (backgroundMusic.paused) {
-                backgroundMusic.play();
-                playMusicButton.textContent = 'Pause Music';
-            } else {
-                backgroundMusic.pause();
-                playMusicButton.textContent = 'Play Music';
-            }
+            playMusicButton.addEventListener('click', () => {
+                if (backgroundMusic.readyState >= 2) { // Ensure the audio is loaded enough to play
+                    if (backgroundMusic.paused) {
+                        backgroundMusic.play().then(() => {
+                            playMusicButton.textContent = 'Pause Music';
+                        }).catch((error) => {
+                            console.error('Playback error:', error);
+                        });
+                    } else {
+                        backgroundMusic.pause();
+                        playMusicButton.textContent = 'Play Music';
+                    }
+                } else {
+                    console.log('Audio not ready yet');
+                }
+            });
         });
     </script>
 </body>
